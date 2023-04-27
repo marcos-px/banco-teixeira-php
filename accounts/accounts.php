@@ -17,7 +17,6 @@ $contasCorrentes = [
     ],
 ];
 
-titularComLetrasMaiusculas($contasCorrentes['123.456.789-10']);
 
 $contasCorrentes['123.456.789-10'] = sacar($contasCorrentes['123.456.789-10'], 500);
 
@@ -25,10 +24,31 @@ $contasCorrentes['123.456.789-12'] = depositar($contasCorrentes['123.456.789-12'
 
 unset ($contasCorrentes['123.456.789-12']);
 
-foreach ($contasCorrentes as $cpf => $conta) {
-   ['titular' => $titular , 'saldo' => $saldo] = $conta;
+titularComLetrasMaiusculas($contasCorrentes['123.456.789-10']);
 
-    exibeMensagem(
-        "$cpf $titular $saldo"
-    );
-}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Contas Correntes</h1>
+    <dl>
+        <?php foreach ($contasCorrentes as $cpf => $conta) : ?>
+            <dt>
+                <h3>
+                    <?= $conta['titular']; ?> - <?= $cpf; ?>
+                </h3>
+            </dt>
+            <dd>
+                <?= $conta['saldo']; ?>
+            </dd>
+            <dl>
+            <?php endforeach; ?>
+            </body>
+</html>
