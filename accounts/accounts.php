@@ -1,32 +1,6 @@
 <?php
 
-function sacar(array $conta, float $valorASacar): array
-{
-
-    if ($valorASacar > $conta['saldo']) {
-        exibeMensagem("Saldo Insuficiente");
-    } else {
-        $conta['saldo'] -= $valorASacar;
-    }
-    return $conta;
-}
-
-function depositar(array $conta, $valorADepositar): array
-{
-    if ($valorADepositar > 0) {
-        $conta['saldo'] += $valorADepositar;
-    } else {
-        exibeMensagem("Depositos precisam ser positivos");
-    }
-    return $conta;
-}
-
-function exibeMensagem(string $mensagem)
-{
-    echo $mensagem . PHP_EOL;
-}
-;
-
+require_once '../functions/functions.php';
 
 $contasCorrentes = [
     "123.456.789-10" => [
@@ -43,6 +17,7 @@ $contasCorrentes = [
     ],
 ];
 
+titularComLetrasMaiusculas($contasCorrentes['123.456.789-10']);
 
 $contasCorrentes['123.456.789-10'] = sacar($contasCorrentes['123.456.789-10'], 500);
 
